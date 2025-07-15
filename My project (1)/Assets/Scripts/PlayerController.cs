@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float rotateSpeed = 75f;
     public float jumpForce;
     public Rigidbody rig;
+    public int Health;
 
     public int coincount;
     void Move()
