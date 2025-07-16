@@ -22,7 +22,6 @@ public class Pickups : MonoBehaviour
         {
             Bean.coincount++;
             Destroy(this.gameObject);
-
         }
     }
 }

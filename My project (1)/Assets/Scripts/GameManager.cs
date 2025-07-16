@@ -20,10 +20,16 @@ public class GameManager : MonoBehaviour
     public TMP_Text countdownText;
     public int countdown;
 
+    [Header("End Screen")]
+    public TMP_Text endUI_score;
+    public TMP_Text endUI_time;
+
     [Header("Screens")]
     public GameObject countdownUI;
     public GameObject gameUI;
-        
+    public GameObject endUI;
+      
+    // Wow that a lot of words... to bad i'm not reading them.
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +88,23 @@ public class GameManager : MonoBehaviour
 
         // disable player movment
         Bean.enabled = false;
+
+        // set UI to display your stats
+        endUI_score.text = "Score: " + Bean.coincount;
+        endUI_time.text = "Time: " + (time * 1).ToString("F2");
+
+       // unlocks the Cursor after trhe game is over 
+        
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        SetScreen(endUI);
+    }
+
+    public void OnRestartButton()
+    {
+        // restart the scene to play again
+        SceneManager.LoadScene(0);
     }
 
     // Update is called once per frame
@@ -107,6 +130,7 @@ public class GameManager : MonoBehaviour
         //disable all other screens
         gameUI.SetActive(false);
         countdownUI.SetActive(false);
+        endUI.SetActive(false);
 
         //activate the requested screen
         screen.SetActive(true);
