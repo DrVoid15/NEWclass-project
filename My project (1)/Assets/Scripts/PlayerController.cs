@@ -81,11 +81,19 @@ public class PlayerController : MonoBehaviour
             StartCoroutine("Die");
         }
     }
+    
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+    }
+    
+    
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Enemy")
+        if(other.gameObject.name == "Enemy" ||  other.gameObject.name == "KillFloor")
         {
-            Health -= 5;
+            Health -= 100;
         }
         if(other.gameObject.name == "FallCollider")
         {
